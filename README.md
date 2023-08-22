@@ -17,15 +17,16 @@ APIs form the connecting glue between modern applications. Nearly every applicat
 To do this integration first, I already add a dependencies to openAPI libraries. 
 
 ```xml
-			<dependency>
+		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
-			<artifactId>swagger-jaxrs2</artifactId>
-			<version>2.1.4</version>
+			<artifactId>swagger-jaxrs2-jakarta</artifactId>
+			<version>2.2.15</version>
 		</dependency>
+
 		<dependency>
 			<groupId>io.swagger.core.v3</groupId>
 			<artifactId>swagger-jaxrs2-servlet-initializer-v2</artifactId>
-			<version>2.1.4</version>
+			<version>2.2.15</version>
 		</dependency>
 ```
 

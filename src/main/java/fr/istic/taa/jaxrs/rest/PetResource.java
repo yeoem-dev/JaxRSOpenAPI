@@ -1,17 +1,16 @@
 package fr.istic.taa.jaxrs.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-
 import fr.istic.taa.jaxrs.domain.Pet;
 import io.swagger.v3.oas.annotations.Parameter;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.Response;
 
-@Path("/pet")
+@Path("pet")
 @Produces({"application/json", "application/xml"})
 public class PetResource {
 
@@ -22,6 +21,13 @@ public class PetResource {
       return new Pet();
   }
 
+  @GET
+  @Path("/")
+  public Pet getPet(Long petId)  {
+      return new Pet();
+  }
+
+  
   @POST
   @Consumes("application/json")
   public Response addPet(
