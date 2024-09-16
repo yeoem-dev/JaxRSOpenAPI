@@ -1,3 +1,2 @@
-java jar dependency\hsqldb-2.5.1.jar 
+java -cp ./target/dependency/hsqldb-2.7.2.jar org.hsqldb.util.DatabaseManagerSwing --driver org.hsqldb.jdbcDriver --url jdbc:hsqldb:hsql://localhost/ --user SA
 
- 
