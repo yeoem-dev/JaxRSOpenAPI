@@ -10,18 +10,11 @@ A web application for buying concert tickets online, built with Java JPA.
 - [ ] Service layer implementation
 - [ ] API endpoints
 - [ ] User interface
-- [ ] Payment integration
 - [ ] Testing
 - [ ] Documentation
 
 ## 🚀 Features
 
-### User Features
-- [ ] Concert Search and Browsing
-    - [ ] Event details display
-    - [ ] Price, date filters
-- [ ] Ticket Purchase
-    - [ ] Email ticket delivery
 
 
 ### Organizer Features
@@ -47,7 +40,7 @@ A web application for buying concert tickets online, built with Java JPA.
 ### Tech Stack
 - Frontend: HTML5, CSS3, JavaScript (React.js/Angular)
 - Backend: Java (JPA)
-- Database: MySQL/PostgreSQL
+- Database: MySQL
 
 ## 🚦 Getting Started
 
