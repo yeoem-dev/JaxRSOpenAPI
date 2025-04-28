@@ -2,10 +2,12 @@ package fr.istic.taa.jaxrs.concert;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Categorie {
+public class Categorie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,8 +15,8 @@ public class Categorie {
     private String libelle;
     private Double prix;
 
-    @OneToMany(mappedBy = "categorie")
-    private List<Billet> billets;
+    @OneToMany(mappedBy = "categorie", cascade = CascadeType.ALL)
+    private List<Billet> billets = new ArrayList<>();
 
     public Categorie(String libelle, Double prix) {
         this.libelle = libelle;

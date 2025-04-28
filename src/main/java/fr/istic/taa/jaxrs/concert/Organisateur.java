@@ -4,12 +4,13 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Organisateur extends Utilisateur {
-    @OneToMany(mappedBy = "organisateur", cascade = CascadeType.PERSIST)
+public class Organisateur extends Utilisateur implements Serializable {
+    @OneToMany(mappedBy = "organisateur", cascade = CascadeType.ALL)
     private List<Concert> concerts = new ArrayList<>();
 
     public Organisateur(String nom, String email) {

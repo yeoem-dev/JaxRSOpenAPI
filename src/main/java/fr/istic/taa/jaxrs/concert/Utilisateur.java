@@ -3,7 +3,7 @@ package fr.istic.taa.jaxrs.concert;
 import jakarta.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,6 @@ public abstract class Utilisateur {
     protected Utilisateur() {
         super();
     }
-
 
     public String getEmail() {
         return email;

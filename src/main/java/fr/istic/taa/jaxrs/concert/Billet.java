@@ -2,21 +2,25 @@ package fr.istic.taa.jaxrs.concert;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class Billet {
+public class Billet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "acheteur_id")
     private Acheteur acheteur;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "concert_id")
     private Concert concert;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "categorie_id")
     private Categorie categorie;
 
     private LocalDateTime dateAchat;

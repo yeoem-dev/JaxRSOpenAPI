@@ -2,27 +2,29 @@ package fr.istic.taa.jaxrs.concert;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-public class Concert {
+public class Concert implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nomConcert;
+    private String nom;
     private String lieu;
     private Date date;
 
     @ManyToOne
+    @JoinColumn(name="organisateur_id")
     private Organisateur organisateur;
     public Concert() {
         super();
     }
 
-    public Concert(String nomConcert, String lieu, Date date, Organisateur organisateur) {
+    public Concert(String nom, String lieu, Date date, Organisateur organisateur) {
 
-        this.nomConcert = nomConcert;
+        this.nom = nom;
         this.lieu = lieu;
         this.date = date;
         this.organisateur = organisateur;
@@ -40,11 +42,11 @@ public class Concert {
     }
 
     public String getNomConcert() {
-        return nomConcert;
+        return nom;
     }
 
-    public void setNomConcert(String nomConcert) {
-        this.nomConcert = nomConcert;
+    public void setNomConcert(String nom) {
+        this.nom = nom;
     }
 
     public String getLieu() {
