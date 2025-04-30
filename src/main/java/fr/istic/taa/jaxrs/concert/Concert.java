@@ -3,6 +3,7 @@ package fr.istic.taa.jaxrs.concert;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -13,7 +14,7 @@ public class Concert implements Serializable {
 
     private String nom;
     private String lieu;
-    private Date date;
+    private LocalDateTime date;
 
     @ManyToOne
     @JoinColumn(name="organisateur_id")
@@ -22,7 +23,7 @@ public class Concert implements Serializable {
         super();
     }
 
-    public Concert(String nom, String lieu, Date date, Organisateur organisateur) {
+    public Concert(String nom, String lieu, LocalDateTime date, Organisateur organisateur) {
 
         this.nom = nom;
         this.lieu = lieu;
@@ -57,11 +58,11 @@ public class Concert implements Serializable {
         this.lieu = lieu;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

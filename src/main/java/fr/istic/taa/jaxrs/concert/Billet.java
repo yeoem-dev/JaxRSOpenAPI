@@ -52,6 +52,10 @@ public class Billet implements Serializable {
         return acheteur;
     }
 
+    public LocalDateTime getDateAchat() {
+        return dateAchat;
+    }
+
     public void setAcheteur(Acheteur acheteur) {
         this.acheteur = acheteur;
     }
