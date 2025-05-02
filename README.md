@@ -61,11 +61,21 @@ cd JaxRSOpenAPI
 mvn clean install
 ```
 
-### 3. Lancer l’application (ex. via Jetty, TomEE, ou application `main()`)
-
-```bash
-mvn jetty:run
-```
+3. Démarrer le serveur HSQLDB
+   ```
+   chmod +x run-hsqldb-server.sh
+   ./run-hsqldb-server.sh
+   ```
+   💡 Le script démarre un serveur HSQLDB dans un dossier data.
+4. Lancer l'interface Swing HSQLDB (optionnel)
+   ```
+   chmod +x show-hsqldb.sh
+   ./show-hsqldb.sh
+   ```
+   Cela ouvre une interface graphique de base de données.
+5. Compiler et lancer l’API
+   mvn clean install
+   mvn exec:java
 
 L’API sera accessible via : `http://localhost:8080`
 
