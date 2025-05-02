@@ -12,7 +12,7 @@ public class Concert implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nom;
+    private String nomConcert;
     private String lieu;
     private LocalDateTime date;
 
@@ -23,9 +23,9 @@ public class Concert implements Serializable {
         super();
     }
 
-    public Concert(String nom, String lieu, LocalDateTime date, Organisateur organisateur) {
+    public Concert(String nomConcert, String lieu, LocalDateTime date, Organisateur organisateur) {
 
-        this.nom = nom;
+        this.nomConcert = nomConcert;
         this.lieu = lieu;
         this.date = date;
         this.organisateur = organisateur;
@@ -43,11 +43,11 @@ public class Concert implements Serializable {
     }
 
     public String getNomConcert() {
-        return nom;
+        return nomConcert;
     }
 
     public void setNomConcert(String nom) {
-        this.nom = nom;
+        this.nomConcert = nom;
     }
 
     public String getLieu() {

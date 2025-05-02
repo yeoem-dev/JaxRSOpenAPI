@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class ConcertDTO {
 
     private Long id;
-    private String nom;
+    private String nomConcert;
     private String lieu;
     private LocalDateTime date;
     private Long organisateurId;
@@ -22,11 +22,11 @@ public class ConcertDTO {
     }
 
     public String getNomConcert() {
-        return nom;
+        return nomConcert;
     }
 
-    public void setNomConcert(String nom) {
-        this.nom = nom;
+    public void setNomConcert(String nomConcert) {
+        this.nomConcert = nomConcert;
     }
 
     public String getLieu() {

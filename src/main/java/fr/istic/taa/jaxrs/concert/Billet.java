@@ -31,8 +31,16 @@ public class Billet implements Serializable {
         this.acheteur = acheteur;
         this.concert = concert;
         this.categorie = categorie;
-        this.dateAchat = LocalDateTime.now();
+        //this.dateAchat = LocalDateTime.now();
     }
+
+    @PrePersist
+    public void onPrePersist() {
+        if (this.dateAchat == null) {
+            this.dateAchat = LocalDateTime.now();
+        }
+    }
+
 
     public Billet() {
         super();
@@ -74,5 +82,8 @@ public class Billet implements Serializable {
 
     public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
+    }
+
+    public void setDateAchat(LocalDateTime now) {
     }
 }
