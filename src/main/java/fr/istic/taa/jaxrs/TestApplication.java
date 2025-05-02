@@ -39,6 +39,7 @@ public class TestApplication extends Application {
 
         clazzes.add(BilletResource.class);
         clazzes.add(OrganisateurResource.class);
+
         clazzes.add(AcheteurDetailsResource.class);
         clazzes.add(ConcertResource.class);
         clazzes.add(CategorieResource.class);

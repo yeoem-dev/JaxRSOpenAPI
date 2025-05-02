@@ -5,17 +5,47 @@ import fr.istic.taa.jaxrs.concert.Acheteur;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AcheteurDetailsDTO extends AcheteurDTO {
+public class AcheteurDetailsDTO {
 
+    private Long id;
+    private String nom;
+    private String email;
     private List<BilletDTO> billets;
+
+    public AcheteurDetailsDTO() {}
+
+    // Getters
+    public Long getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     public List<BilletDTO> getBillets() {
         return billets;
     }
 
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public void setBillets(List<BilletDTO> list) {
-        this.billets = list;
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setBillets(List<BilletDTO> billets) {
+        this.billets = billets;
     }
 
     public static AcheteurDetailsDTO fromEntity(Acheteur acheteur) {

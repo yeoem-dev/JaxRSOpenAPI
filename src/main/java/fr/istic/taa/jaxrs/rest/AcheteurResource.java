@@ -47,4 +47,17 @@ public class AcheteurResource {
                 .collect(Collectors.toList());
     }
 
+    @GET
+    @Path("/{id}/details")
+    public Response getAcheteurDetails(@PathParam("id") Long id) {
+        Acheteur acheteur = acheteurDao.findOne(id);
+        if (acheteur == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+
+        AcheteurDetailsDTO dto = AcheteurDetailsDTO.fromEntity(acheteur); // doit inclure ses billets
+        return Response.ok(dto).build();
+    }
+
+
 }

@@ -12,63 +12,89 @@ public class BilletDTO {
     private Long categorieId;
     private LocalDateTime dateAchat;
 
-    // Constructeur vide (obligatoire pour la sérialisation JSON)
-    public BilletDTO() {
-    }
+    // Libellés supplémentaires pour affichage
+    private String nomConcert;
+    private String libelleCategorie;
 
-    // Getters et Setters
+    public BilletDTO() {}
+
+    // Getters
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Long getAcheteurId() {
         return acheteurId;
     }
 
-    public void setAcheteurId(Long acheteurId) {
-        this.acheteurId = acheteurId;
-    }
-
     public Long getConcertId() {
         return concertId;
-    }
-
-    public void setConcertId(Long concertId) {
-        this.concertId = concertId;
     }
 
     public Long getCategorieId() {
         return categorieId;
     }
 
-    public void setCategorieId(Long categorieId) {
-        this.categorieId = categorieId;
-    }
-
     public LocalDateTime getDateAchat() {
         return dateAchat;
+    }
+
+    public String getNomConcert() {
+        return nomConcert;
+    }
+
+    public String getLibelleCategorie() {
+        return libelleCategorie;
+    }
+
+    // Setters
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setAcheteurId(Long acheteurId) {
+        this.acheteurId = acheteurId;
+    }
+
+    public void setConcertId(Long concertId) {
+        this.concertId = concertId;
+    }
+
+    public void setCategorieId(Long categorieId) {
+        this.categorieId = categorieId;
     }
 
     public void setDateAchat(LocalDateTime dateAchat) {
         this.dateAchat = dateAchat;
     }
 
-    public static BilletDTO fromEntity(Billet billet) {
-        if (billet == null) return null;
+    public void setNomConcert(String nomConcert) {
+        this.nomConcert = nomConcert;
+    }
 
+    public void setLibelleCategorie(String libelleCategorie) {
+        this.libelleCategorie = libelleCategorie;
+    }
+
+    public static BilletDTO fromEntity(Billet billet) {
         BilletDTO dto = new BilletDTO();
         dto.setId(billet.getId());
-        dto.setAcheteurId(billet.getAcheteur() != null ? billet.getAcheteur().getId() : null);
-        dto.setConcertId(billet.getConcert() != null ? billet.getConcert().getId() : null);
-        dto.setCategorieId(billet.getCategorie() != null ? billet.getCategorie().getId() : null);
         dto.setDateAchat(billet.getDateAchat());
+
+        if (billet.getAcheteur() != null) {
+            dto.setAcheteurId(billet.getAcheteur().getId());
+        }
+
+        if (billet.getConcert() != null) {
+            dto.setConcertId(billet.getConcert().getId());
+            dto.setNomConcert(billet.getConcert().getNomConcert());
+        }
+
+        if (billet.getCategorie() != null) {
+            dto.setCategorieId(billet.getCategorie().getId());
+            dto.setLibelleCategorie(billet.getCategorie().getLibelle());
+        }
 
         return dto;
     }
-
-
 }

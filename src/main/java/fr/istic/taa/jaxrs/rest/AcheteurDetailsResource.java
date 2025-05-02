@@ -8,7 +8,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/acheteurs/details")
+@Path("/acheteurs/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class AcheteurDetailsResource {
@@ -18,7 +18,7 @@ public class AcheteurDetailsResource {
 
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}/details")
     public Response getAcheteurDetails(@PathParam("id") Long id) {
         Acheteur acheteur = acheteurDao.findWithBillets(id);
         if (acheteur == null) {
