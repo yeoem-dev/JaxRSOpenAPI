@@ -4,9 +4,13 @@ import fr.istic.taa.jaxrs.concert.Categorie;
 import fr.istic.taa.jaxrs.dao.generic.CategorieDao;
 import fr.istic.taa.jaxrs.dto.CategorieDTO;
 
+import fr.istic.taa.jaxrs.dto.OrganisateurDTO;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("/categories")
 @Produces(MediaType.APPLICATION_JSON)
@@ -35,5 +39,14 @@ public class CategorieResource {
 
         CategorieDTO dto = CategorieDTO.fromEntity(categorie);
         return Response.ok(dto).build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CategorieDTO> getAllCategories() {
+        return categorieDao.findAll().stream()
+
+                .map(CategorieDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 }

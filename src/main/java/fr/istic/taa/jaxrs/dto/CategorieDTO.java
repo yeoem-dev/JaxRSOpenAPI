@@ -3,7 +3,7 @@ package fr.istic.taa.jaxrs.dto;
 public class CategorieDTO {
 
     private Long id;
-    private String nom;
+    private String libelle;
     private Double prix;
 
     public CategorieDTO() {
@@ -18,11 +18,11 @@ public class CategorieDTO {
     }
 
     public String getLibelle() {
-        return nom;
+        return libelle;
     }
 
-    public void setLibelle(String nom) {
-        this.nom = nom;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
     public Double getPrix() {

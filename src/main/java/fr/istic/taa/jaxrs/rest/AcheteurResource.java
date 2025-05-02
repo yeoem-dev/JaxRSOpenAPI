@@ -9,6 +9,9 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Path("/acheteurs")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -37,4 +40,11 @@ public class AcheteurResource {
         AcheteurDetailsDTO dto = AcheteurDetailsDTO.fromEntity(acheteur); // inclut les billets
         return Response.ok(dto).build();
     }
+    @GET
+    public List<AcheteurDTO> getAllAcheteurs() {
+        return acheteurDao.findAll().stream()
+                .map(AcheteurDTO::fromEntity)
+                .collect(Collectors.toList());
+    }
+
 }
