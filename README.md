@@ -1,88 +1,97 @@
-# Concert Ticket Booking System
+# 🎶 Concert Tickets App - Backend (JAX-RS)
 
-A web application for buying concert tickets online, built with Java JPA.
+Ce projet constitue le backend de l'application **Concert Tickets App**, exposant une API RESTful pour gérer des concerts, des utilisateurs (acheteurs et organisateurs), des billets, et des catégories.
 
-## 🎯 Project Status
-- [x] Project structure setup
-- [x] Database configuration
-- [x] Entity creation
-- [ ] DAO classes implementation
-- [ ] Service layer implementation
-- [ ] API endpoints
-- [ ] User interface
-- [ ] Testing
-- [ ] Documentation
+---
 
-## 🚀 Features
+## 🛠️ Technologies
 
+- Java 17+
+- JAX-RS (Jakarta RESTful Web Services)
+- Hibernate (JPA)
+- H2 (ou autre SGBD relationnel)
+- Maven (build & gestion de dépendances)
 
+---
 
-### Organizer Features
-- [ ] Event Management
-    - [ ] Create, modify, delete events
-    - [ ] Manage event details
-    - [ ] Ticket stock management
+## 📂 Structure du projet
 
+```
+src/
+├── concert/                  → Entités JPA : Concert, Billet, Acheteur, Organisateur, etc.
+├── dao/generic/             → DAO génériques pour la persistance
+├── dto/                     → DTOs pour sérialisation JSON
+├── rest/                    → Contrôleurs REST exposant l'API
+└── Main.java                → Point d'entrée (si lancement standalone)
+```
 
-### Admin Features (Perspectives)
-- [ ] Event Moderation
-    - [ ] Event validation
-    - [ ] Content moderation
+---
 
-## 🛠 Technical Requirements
+## 🌐 Endpoints disponibles
 
-### Prerequisites
+| Ressource       | Méthode | URL                          | Description                                  |
+|----------------|---------|------------------------------|----------------------------------------------|
+| Acheteurs       | GET     | `/acheteurs`                 | Liste tous les acheteurs                     |
+| Acheteurs       | POST    | `/acheteurs`                 | Crée un nouvel acheteur                     |
+| Acheteurs       | GET     | `/acheteurs/{id}`            | Récupère les détails d’un acheteur + billets |
+| Organisateurs   | GET     | `/organisateurs`             | Liste tous les organisateurs                |
+| Organisateurs   | POST    | `/organisateurs`             | Crée un nouvel organisateur                 |
+| Organisateurs   | GET     | `/organisateur/{id}/details` | Récupère les concerts de l’organisateur     |
+| Concerts        | GET     | `/concerts`                  | Liste tous les concerts                     |
+| Concerts        | POST    | `/concerts`                  | Crée un concert                             |
+| Catégories      | GET     | `/categories`                | Liste toutes les catégories                 |
+| Catégories      | POST    | `/categories`                | Crée une catégorie                          |
+| Billets         | GET     | `/billets`                   | Liste tous les billets                      |
+| Billets         | POST    | `/billets`                   | Crée un billet (via ID acheteur/concert/etc)|
+
+---
+
+## ▶️ Démarrage rapide
+
+### 1. Prérequis
+
 - Java 17+
 - Maven
-- MySQL/HSQLDB
-- Postman (for API testing)
 
-### Tech Stack
-- Frontend: HTML5, CSS3, JavaScript (React.js/Angular)
-- Backend: Java (JPA)
-- Database: MySQL
+### 2. Cloner & compiler
 
-## 🚦 Getting Started
-
-### Database Setup
-1. Launch the database server:
 ```bash
-./run-hsqldb-server.sh
-```
-
-2. Launch the database manager:
-```bash
-./show-hsqldb.sh
-```
-
-### Installation Steps
-1. Clone the repository:
-```bash
-git clone https://github.com/yeoem-dev/JaxRSOpenAPI.git
-```
-
-2. Configure database connection in `persistence.xml`
-
-3. Build the project:
-```bash
+git clone https://github.com/yeoem-dev/JaxRSOpenAPI
+cd JaxRSOpenAPI
 mvn clean install
 ```
 
-4. Run the application:
+### 3. Lancer l’application (ex. via Jetty, TomEE, ou application `main()`)
+
 ```bash
 mvn jetty:run
 ```
 
-### Access Points
-- API: http://localhost:8111/api
-- API Documentation: http://localhost:8111/api-docs (not available yet 😉)
+L’API sera accessible via : `http://localhost:8080`
 
-## 📝 Next Steps
-- [ ] Complete ticket management system
-- [ ] Develop front-end interface
-- [ ] Set up automated testing
+---
 
+## 🦚 Tests
 
-## 🤝 Contributing
-Powered by Emmanuel Yéo @yeoem-dev
-Supervised by Adrien Le Roch @aleroch
+Les endpoints peuvent être testés avec **Postman** ou en utilisant le frontend disponible [ici](https://github.com/ton-compte/concert-tickets-frontend) (`npm run dev` sur port 5173).
+
+---
+
+## 🔍 Détails supplémentaires
+
+- La stratégie d’héritage `@Inheritance(strategy = InheritanceType.JOINED)` est utilisée pour le polymorphisme Acheteur/Organisateur (entité `Utilisateur`).
+- Les entités DTO sont utilisées pour découpler la persistance de l’exposition.
+- Une validation simple est intégrée côté API (`null check` dans les `@POST`).
+
+---
+
+## 🧩 Frontend associé
+
+Ce backend est connecté au frontend Vue.js dans le dossier [`concert-tickets-app`](https://github.com/yeoem-dev/concert-tickets-app).
+
+---
+
+## 📄 Licence
+
+MIT © 2025 — [TonNom]
+
