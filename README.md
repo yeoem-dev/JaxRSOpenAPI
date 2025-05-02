@@ -93,5 +93,5 @@ Ce backend est connecté au frontend Vue.js dans le dossier [`concert-tickets-ap
 
 ## 📄 Licence
 
-MIT © 2025 — [TonNom]
+MIT © 2025 — [yeoem-dev]
 
