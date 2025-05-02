@@ -7,6 +7,8 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("/billets")
 @Produces("application/json")
@@ -60,6 +62,13 @@ public class BilletResource {
         billetDao.save(billet);
         return Response.status(Response.Status.CREATED)
                 .entity("Billet acheté avec succès. ID: " + billet.getId()).build();
+    }
+
+    @GET
+    public List<BilletDTO> getAllBillets() {
+        return billetDao.findAll().stream()
+                .map(BilletDTO::fromEntity)
+                .collect(Collectors.toList());
     }
 
 }
